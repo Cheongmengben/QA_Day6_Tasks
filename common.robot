@@ -101,15 +101,63 @@ Multiplier Contract (b)
     Checkbox should be selected     dc_take_profit-checkbox_input
     Checkbox should be selected     dc_stop_loss-checkbox_input
     Checkbox should not be selected     dt_cancellation-checkbox_input
-#    unselect stop/loss and take profit
-    Click element   //*[@class="dc-checkbox take_profit-checkbox__input"]
-    Click element  //*[@class="dc-checkbox stop_loss-checkbox__input"]
 #    select deal cancellation
     Click element   //*[@class="dc-checkbox"]
 #    checking for checked checkbox
     Checkbox should be selected     dt_cancellation-checkbox_input
-    Checkbox should not be selected     dc_stop_loss-checkbox_input
-    Checkbox should not be selected     dc_take_profit-checkbox_input
+    Page should not contain     //*[@class="dc_stop_loss-checkbox_input" and @checked]//parent::label
+    Page should not contain     //*[@class="dc_take_profit-checkbox_input" and @checked]//parent::label
+
+Multiplier Contract (c)
+    wait until page contains element    //*[@name="multiplier" and contains (@class, "dc-text dc-dropdown__display-text")]
+    click element   //*[@name="multiplier" and contains (@class, "dc-text dc-dropdown__display-text")]
+    page should contain element    //*[@value="20"]
+    page should contain element    //*[@value="40"]
+    page should contain element    //*[@value="60"]
+    page should contain element    //*[@value="100"]
+    page should contain element    //*[@value="200"]
+
+Multiplier Contract (e)
+#maximum stake
+    click element   ${stake_amount_input}
+    press keys  ${stake_amount_input}     CTRL+A  DELETE
+    input text      ${stake_amount_input}   2001
+    wait until page contains element    //*[text()="Maximum stake allowed is 2000.00." and contains (@class, "dc-text")]
+    page should contain element     //*[text()="Maximum stake allowed is 2000.00." and contains (@class, "dc-text")]
+
+Multiplier Contract (f)
+#minimum stake
+    click element   ${stake_amount_input}
+    press keys  ${stake_amount_input}    CTRL+A  DELETE
+    input text      ${stake_amount_input}   0
+    wait until page contains element    //*[@class="trade-container__tooltip dc-tooltip dc-tooltip--error"]
+    page should contain element     //*[@class="trade-container__tooltip dc-tooltip dc-tooltip--error"]
+
+Multiplier Contract (g)
+#Click on plus button
+    click element   //*[@id="dt_amount_input_add"]
+    wait until page contains element    //*[@value="1" and contains (@id, "dt_amount_input")]
+    click element   //*[@id="dt_amount_input_add"]
+    wait until page contains element    //*[@value="2" and contains (@id, "dt_amount_input")]
+    click element   //*[@id="dt_amount_input_add"]
+    wait until page contains element    //*[@value="3" and contains (@id, "dt_amount_input")]
+
+Multiplier Contract (h)
+#Click on minus button
+    click element   //*[@id="dt_amount_input_sub"]
+    wait until page contains element    //*[@value="2" and contains (@id, "dt_amount_input")]
+    click element   //*[@id="dt_amount_input_sub"]
+    wait until page contains element    //*[@value="1" and contains (@id, "dt_amount_input")]
+
+Multiplier Contract (i)
+# deal cancellation
+    click element   //*[@name="cancellation_duration" and contains (@class, "dc-text dc-dropdown__display-text")]
+    page should contain element    //*[@value="5m"]
+    page should contain element    //*[@value="10m"]
+    page should contain element    //*[@value="15m"]
+    page should contain element    //*[@value="30m"]
+    page should contain element    //*[@value="60m"]
+
 
 
 

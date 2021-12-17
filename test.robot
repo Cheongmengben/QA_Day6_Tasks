@@ -14,6 +14,7 @@ ${demo_acc_tab}     id=dt_core_account-switcher_demo-tab
 ${select_demo}      id=dt_VRTC4794148
 ${volatility}   //*[@class="cq-symbol-select-btn"]
 ${contract_dropdown}    dt_contract_dropdown
+${stake_amount_input}   //*[@id="dt_amount_input"]
 
 *** Keyword ***
 
@@ -35,4 +36,11 @@ Multiplier Contract
     Multiplier Contract
     Multiplier Contract (a)
     Multiplier Contract (b)
+    Multiplier Contract (c)
+    Multiplier Contract (e)
+    Multiplier Contract (f)
+    Multiplier Contract (g)
+    Multiplier Contract (h)
+    Multiplier Contract (i)
+
 
